@@ -9,9 +9,6 @@ class door:
 
 
 class monty:
-    choice = 0
-    auxDoor = 0
-    finalChoice = 0
     def __init__(self):
         self.doors = [door("A"), door("B"), door("C")]
         self.init_doors()
@@ -39,49 +36,6 @@ class monty:
                     print("Carro ", door.isOpen)
                 else:
                     print("Carro ", door.isOpen, ", probability ", door.probability)
-
-    def selectDoor(self, i):
-        self.choice = i
-
-    def openGoatDoor(self):
-        found_goat_door = False
-        for i in range(len(self.doors)):
-            if self.doors[self.choice].isGoat:
-                if self.doors[i].isGoat and i != self.choice:
-                    if not found_goat_door:
-                        goat_doors = [j for j in range(len(self.doors)) if self.doors[j].isGoat and j != self.choice]
-                        random_goat_door = random.choice(goat_doors)
-                        self.doors[random_goat_door].isOpen = True
-                        found_goat_door = True
-                for j in range(len(self.doors)):
-                    if not self.doors[j].isGoat:
-                        self.auxDoor = j
-                        self.doors[self.auxDoor].probability = 0.66
-            else:
-                if self.doors[i].isGoat and i != self.choice:
-                    if not found_goat_door:
-                        # Randomly select one of the two goat doors
-                        goat_doors = [j for j in range(len(self.doors)) if self.doors[j].isGoat and j != self.choice]
-                        random_goat_door = random.choice(goat_doors)
-                        self.doors[random_goat_door].isOpen = True
-                        found_goat_door = True
-                    for j in range(len(self.doors)):
-                        if self.doors[j].isGoat and not self.doors[j].isOpen:
-                            self.auxDoor = j
-                            self.doors[self.auxDoor].probability = 0.66       
-             
-    def wannaChange(self, dec):
-        election = dec
-        if election == "s":
-            self.finalChoice = self.auxDoor
-        else:
-            self.finalChoice = self.choice
-
-    def wasWin(self):
-        if self.doors[self.finalChoice].isGoat:
-            return False
-        else:
-            return True
 
     def game(self):
         self.init_doors()
@@ -142,11 +96,11 @@ class monty:
 def main():
     game = monty()
     #print("Desde aca")
-    #while True:
-    #    game.game()
-    #    a = input("Desea jugar otra vez?. s para si, n para no ")
-    #    if a != "s":
-    #        break
+    while True:
+        game.game()
+        a = input("Desea jugar otra vez?. s para si, n para no ")
+        if a != "s":
+            break
 
 
 if __name__ == "__main__":

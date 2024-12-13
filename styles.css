@@ -43,6 +43,7 @@ h1{
 .door-container {
     display: flex;
     justify-content: space-around;
+    background-size: contain;
     margin-top: 20px;
     width: 60%;
 }
@@ -50,7 +51,9 @@ h1{
     width: 150px;
     height: 150px;
     border: 2px solid black;
-    background-size: cover;
+    background-size: contain; /* Asegura que la imagen se ajuste al contenedor */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center; /* Centra la imagen dentro del recuadro */
     cursor: pointer;
     transition: opacity 0.3s ease;
     background-image: url('img/door.png');
