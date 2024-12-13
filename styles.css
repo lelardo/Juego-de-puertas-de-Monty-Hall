@@ -132,3 +132,15 @@ button:active {
     justify-content: center;
 
 }
+
+#stats {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: center;
+}

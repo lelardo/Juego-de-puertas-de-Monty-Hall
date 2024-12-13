@@ -106,10 +106,12 @@ function checkWin() {
     if (doors[finalChoice].isGoat) {
         document.getElementById("final-message").innerText =
             "¡Perdiste! La puerta " + (finalChoice + 1) + " tiene una cabra.";
+            addDefeat();
             playSound(loseSound);
     } else {
         document.getElementById("final-message").innerText =
             "¡Ganaste! La puerta " + (finalChoice + 1) + " tiene el coche.";
+            addVictory();
             playSound(winSound);
     }
 
@@ -183,6 +185,27 @@ function startGame() {
         door.style.backgroundImage = "url('img/door.png')"; // Establecer la imagen predeterminada
     });
 }
+
+let victories = 0;
+let defeats = 0;
+
+function updateStats() {
+    document.getElementById('victories').textContent = victories;
+    document.getElementById('defeats').textContent = defeats;
+}
+
+// Simula una victoria
+function addVictory() {
+    victories++;
+    updateStats();
+}
+
+// Simula una derrota
+function addDefeat() {
+    defeats++;
+    updateStats();
+}
+
 
 // Función para reiniciar el juego
 function restartGame() {
