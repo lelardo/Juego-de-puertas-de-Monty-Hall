@@ -1,0 +1,131 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('img/background.jpg');
+    background-size: 100% 100%; /* Estira la imagen para cubrir toda la ventana */
+    background-position: center center;
+    background-attachment: fixed;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Crear los destellos (puntos) */
+.flash {
+    position: absolute;
+    border-radius: 50%;
+    animation: flash 2s infinite alternate;  /* Animación de parpadeo */
+}
+
+/* Animación de destello (brillo) */
+@keyframes flash {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+h1{
+    color: #f2c1fc;
+}
+.door-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    width: 60%;
+}
+.door {
+    width: 150px;
+    height: 150px;
+    border: 2px solid black;
+    background-size: cover;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    background-image: url('img/door.png');
+}
+.decision-btns {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.message {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #f2c1fc;
+}
+.message, .final-message {
+    font-weight: bold;
+    color: #f2c1fc;
+}
+.restart-btn {
+    margin-top: 20px;
+    padding: 15px 30px;
+    background-color: #801d8d;
+    color: white;
+    border: none;
+    border-radius: 8px; /* Bordes redondeados */
+    font-size: 16px; /* Aumentar el tamaño de la fuente */
+    font-weight: bold; /* Texto en negrita */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    transition: all 0.3s ease-in-out; /* Transición suave para el hover */
+}
+
+.restart-btn:hover {
+    background-color: #a32bb3;
+    transform: scale(1.05); /* Efecto de agrandamiento al pasar el cursor */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el cursor */
+}
+
+.restart-btn:active {
+    transform: scale(0.98); /* Efecto de compresión al hacer clic */
+    background-color: #581461;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra más suave cuando se hace clic */
+}
+button {
+    padding: 8px 18px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px; /* Bordes más redondeados */
+    cursor: pointer;
+    background-color: #801d8d; /* Color base */
+    color: white;
+    font-weight: bold; /* Texto en negrita */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    transition: all 0.3s ease; /* Transición suave para hover */
+    margin: 10px;
+}
+
+button:hover {
+    background-color: #a32bb3; /* Color ligeramente más oscuro */
+    transform: scale(1.05); /* Efecto de agrandamiento */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+}
+
+button:active {
+    transform: scale(0.98); /* Efecto de compresión al hacer clic */
+    background-color: #581461;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave al hacer clic */
+}
+
+.probability{
+    color : #dd9fe6;
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+
+}

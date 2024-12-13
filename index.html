@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Monty Hall</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <h1>Juego de Monty Hall</h1>
+    <div id="doors-container" class="door-container">
+        <div id="door-0" class="door" onclick="selectDoor(0)">
+            <div class="probability">0.33</div>
+        </div>
+        <div id="door-1" class="door" onclick="selectDoor(1)">
+            <div class="probability">0.33</div>
+        </div>
+        <div id="door-2" class="door" onclick="selectDoor(2)">
+            <div class="probability">0.33</div>
+        </div>
+    </div>
+    <div id="decision-container" class="decision-btns" style="display: none;">
+        <button onclick="makeDecision('n')">Mantener Puerta</button>
+        <button onclick="makeDecision('s')">Cambiar Puerta</button>
+    </div>
+    <div id="message-container" class="message"></div>
+    <div id="final-message" class="final-message"></div>
+    <button id="restart-btn" class="restart-btn" style="display: none;" onclick="restartGame()">Jugar otra vez</button>
+
+    <script src="montyHall.js"></script>
+</body>
+</html>
