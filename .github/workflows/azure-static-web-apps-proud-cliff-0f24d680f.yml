@@ -1,5 +1,4 @@
 name: Azure Static Web Apps CI/CD
-
 on:
   push:
     branches:
@@ -8,7 +7,6 @@ on:
     types: [opened, synchronize, reopened, closed]
     branches:
       - main
-
 jobs:
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
@@ -27,16 +25,16 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'  # Establece una versión estable compatible
-
+          node-version: '18'
+          
       - name: Install Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.9'  # Establece una versión estable compatible
-
+          python-version: '3.9'
+          
       - name: Install OIDC Client from Core Package
         run: npm install @actions/core@1.6.0 @actions/http-client
-
+        
       - name: Get Id Token
         uses: actions/github-script@v6
         id: idtoken
@@ -45,20 +43,20 @@ jobs:
             const core = require('@actions/core');
             return await core.getIDToken();
           result-encoding: string
-
+          
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_PROUD_CLIFF_0F24D680F }}
           action: "upload"
-          app_location: "/"   # Tu app está en la raíz
-          api_location: ""    # No usas API separada
-          output_location: "."  # El output es tu mismo código
+          app_location: "/"
+          api_location: ""
+          output_location: "."
           github_id_token: ${{ steps.idtoken.outputs.result }}
-          app_build_command: "echo No build needed" # Evita el error de compilación
-          skip_app_build: true # ¡Muy importante para proyectos sin build!
-
+          app_build_command: "echo No build needed"
+          skip_app_build: true
+          
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
@@ -68,4 +66,5 @@ jobs:
         id: closepullrequest
         uses: Azure/static-web-apps-deploy@v1
         with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_PROUD_CLIFF_0F24D680F }}
           action: "close"
